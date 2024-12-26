@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:8080"  # 将 Vue 前端服务映射到宿主机的 8080 端口
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"  # 将 Django 后端服务映射到宿主机的 8000 端口
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: BS_project
+    ports:
+      - "3307:3306"  # 将数据库端口映射到宿主机
+    volumes:
+      - db_data:/var/lib/mysql  # 数据持久化
+    networks:
+      - app-network
+
+volumes:
+  db_data:  # 定义 MySQL 数据卷
+
+networks:
+  app-network:  # 定义服务网络

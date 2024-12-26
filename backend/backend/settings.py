@@ -89,8 +89,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'BS_project',
         'USER': 'root',
-        'PASSWORD': '123!@zxcvbnm',
-        'HOST': 'localhost',
+        'PASSWORD': 'root', #如果连接docker就写root，自己电脑测试用123!@zxcvbnm
+        'HOST': 'db', #如果连接docker就写mysql，自己电脑测试用localhost，新的db
         'PORT': '3306',
     }
 }
