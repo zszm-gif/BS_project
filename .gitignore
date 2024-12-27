@@ -1,4 +1,7 @@
 # 忽略备份文件
 BS_project_docker_image
 
+# 忽略功能展示视频和原始md，word报告
 report/*.mp4
+report/*.md
+report/*.doc
